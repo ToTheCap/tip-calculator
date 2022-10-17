@@ -1,13 +1,249 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+:root {
+  --very-dark-cyan: hsl(183, 100%, 15%);
+  --disabled-button: hsl(183, 78%, 24%);
+  --strong-cyan: hsl(172, 67%, 45%);
+  --button-hover: hsl(173, 61%, 77%);
+  --invalid-input: hsl(13, 70%, 60%);
+  --dark-grayish-cyan: hsl(186, 14%, 43%);
+  --light-grayish-cyan: hsl(185, 41%, 84%);
+  --grayish-cyan: hsl(183, 15%, 56%);
+  --white: hsl(0, 0%, 100%);
+  --input-background: hsl(185, 38%, 97%);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Space Mono';
+  font-weight: 700;
+}
+
+body {
+  height: 100vh;
+  font-size: 1rem;
+  background-color: var(--light-grayish-cyan);
+  color: var(--dark-grayish-cyan);
+}
+
+label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+input {
+  height: 2em;
+  width: 100%;
+  padding: 0 0.5em !important;
+  border: none;
+  outline: none;
+  cursor: auto !important;
+  font-size: 1.5rem;
+  text-align: right;
+  color: var(--very-dark-cyan) !important;
+  border-radius: 5px;
+  background-color: var(--input-background) !important;
+}
+
+input:focus {
+  border: 2px solid var(--strong-cyan);
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  /* some margin are still there even though it's hidden */
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+button {
+  height: 2em;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  color: var(--very-dark-cyan);
+  background-color: var(--button-hover);
+}
+
+button:disabled {
+  cursor: default;
+  background-color: var(--disabled-button);
+}
+
+.logo {
+  display: block;
+  margin: 3em auto;
+}
+
+.App {
+  width: 375px;
+  margin: 0 auto;
+  padding: 2em 1.5em;
+  border-radius: 25px;
+  background-color: var(--white);
+  box-shadow: 0px 32px 43px rgba(79, 166, 175, 0.200735);
+}
+
+.input-section {
+  padding: 0 0.5em;
+}
+
+/*
+====================
+  Input Box
+=====================
+*/
+
+.input-wrapper {
+  position: relative;
+  margin-bottom: 2em;
+}
+
+.input-icon {
+  position: absolute;
+  height: 16px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 1em;
+  margin: auto 0;
+}
+
+.input-invalid {
+  border: 2px solid var(--invalid-input) !important;
+}
+
+.input-invalid-text {
+  color: var(--invalid-input);
+}
+
+/*
+====================
+  Tip
+=====================
+*/
+
+.tip-wrapper {
+  margin-bottom: 2em;
+}
+
+.tip-wrapper label {
+  margin-bottom: 16px;
+}
+
+.tip-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.tip-box {
+  width: 146px;
+  font-size: 1.5rem;
+  color: var(--white);
+  background-color: var(--very-dark-cyan);
+}
+
+.active-tip-box {
+  color: var(--very-dark-cyan);
+  background-color: var(--strong-cyan);
+}
+
+
+/*
+====================
+  Result
+=====================
+*/
+
+.result {
+  width: 100%;
+  padding: 1.5em;
+  padding-top: 2.25em;
+  border-radius: 15px;
+  color: var(--white);
+  background-color: var(--very-dark-cyan);
+}
+
+.result-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5em;
+}
+
+.result-box span {
+  font-size: 13px;
+  color: var(--grayish-cyan);
+}
+
+.result-amount {
+  font-size: 2rem;
+  color: var(--strong-cyan);
+}
+
+.reset {
+  width: 100%;
+  height: 2.4em;
+  font-size: 1.25rem;
+  color: var(--very-dark-cyan);
+  background-color: var(--strong-cyan);
+}
+
+
+@media (min-width: 1440px) {
+  .App {
+    width: 920px;
+    display: flex;
+    column-gap: 32px;
+    padding: 2em;
+    padding-left: 3em;
+  }
+
+  .input-section {
+    max-width: 379px;
+    padding: 1em 0;
+    padding-right: 0;
+  }
+
+  .input-wrapper {
+    margin-bottom: 0px;
+  }
+
+  .tip-wrapper {
+    margin: 40px 0px;
+  }
+
+  .tip-buttons {
+    gap: 16px 14px;
+  }
+
+  .tip-box {
+    width: 117px;
+  }
+
+  .result {
+    max-width: 413px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2.5em;
+  }
+
+  .result-amount {
+    font-size: 3rem;
+  }
+
 }
